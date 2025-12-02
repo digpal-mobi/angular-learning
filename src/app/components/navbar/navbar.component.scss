@@ -1,0 +1,66 @@
+// Variables for easy theme changes
+$nav-bg-color: #868484;
+$text-color: #e1e0e0;
+$accent-color: #007bff; // A standard blue for links/hovers
+$padding-x: 20px;
+$padding-y: 15px;
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: $padding-y $padding-x;
+  background-color: $nav-bg-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+
+  // 1. The Brand Name
+  .brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $text-color;
+    cursor: pointer;
+  }
+
+  // 2. The Navigation Links
+  .nav-links {
+    ul {
+      display: flex; // Makes list horizontal
+      list-style: none; // Removes bullet points
+      margin: 0;
+      padding: 0;
+      gap: 20px; // Adds space between 'Home' and 'Products'
+
+      li {
+        cursor: pointer;
+        font-weight: 500;
+        color: $text-color;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $accent-color; // Color change on hover
+        }
+
+        // Optional: If you use anchor tags inside li
+        a {
+          text-decoration: none;
+          color: inherit;
+
+          // Style for the active link
+          &.active-link {
+            color: $accent-color; // e.g. Blue
+            font-weight: bold;
+            border-bottom: 2px solid $accent-color; // Optional underline effect
+          }
+        }
+      }
+    }
+  }
+}
+
+// Mobile Responsiveness (Optional)
+@media (max-width: 600px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,7 @@
+.products-grid {
+  display: grid;
+  // Creates a responsive grid that fits as many cards as possible
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}

@@ -1,0 +1,57 @@
+// Variables (Matching your Navbar)
+$footer-bg: #f8f9fa; // Slightly darker than white to separate it
+$text-color: #333333;
+$accent-color: #007bff;
+$border-color: #e9ecef;
+
+.footer-container {
+  background-color: $footer-bg;
+  border-top: 1px solid $border-color;
+  padding: 20px;
+  margin-top: auto; // This is a fallback helper
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto; // Centers content on huge screens
+
+  .copyright {
+    color: lighten($text-color, 20%);
+    font-size: 0.9rem;
+  }
+
+  .footer-links {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+
+      li {
+        a {
+          text-decoration: none;
+          color: $text-color;
+          font-size: 0.9rem;
+          transition: color 0.2s;
+
+          &:hover {
+            color: $accent-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Mobile Responsiveness
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}

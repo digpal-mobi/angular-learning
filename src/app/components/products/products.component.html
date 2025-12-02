@@ -1,0 +1,21 @@
+<div *ngIf="loading$ | async" class="loading">Loading products...</div>
+
+<div *ngIf="error$ | async as err" class="error">
+  Error loading products: {{ err | json }}
+</div>
+
+<!-- Main product list -->
+<div *ngIf="products$ | async as products">
+  <div class="products-grid" *ngIf="products.length > 0">
+    <app-product-card
+      *ngFor="let p of products; trackBy: trackById"
+      [product]="p"
+      (addToCart)="handleAddToCart($event)"
+    >
+    </app-product-card>
+  </div>
+
+  <div *ngIf="products.length === 0 && !(loading$ | async)">
+    No products available.
+  </div>
+</div>

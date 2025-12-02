@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="image-container">
+    <img [src]="product.image" [alt]="product.title" />
+    <span class="category-tag">{{ product.category }}</span>
+  </div>
+
+  <div class="card-content">
+    <h3 class="title" [title]="product.title">{{ product.title }}</h3>
+
+    <p class="description">{{ product.description }}</p>
+
+    <div class="card-footer">
+      <span class="price">{{ product.price | currency : "USD" }}</span>
+      <button class="add-btn" (click)="onAddToCart()">Add to Cart</button>
+    </div>
+  </div>
+</div>
