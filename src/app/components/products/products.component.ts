@@ -6,6 +6,7 @@ import * as ProductsActions from "../../store/products.actions"
 import * as ProductsSelectors from "../../store/products.selectors"
 import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
+import * as CartActions from '../../store/cart/cart.actions';
 
 @Component({
   selector: 'app-products',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
-products$!: Observable<Product[]>;
+  products$!: Observable<Product[]>;
   loading$!: Observable<boolean>;
   error$!: Observable<any>;
 
@@ -28,11 +29,12 @@ products$!: Observable<Product[]>;
     this.store.dispatch(ProductsActions.loadProducts());
   }
 
-   trackById(index: number, item: Product) {
+  trackById(index: number, item: Product) {
     return item.id;
   }
 
-   handleAddToCart(product: Product) {
-    console.log('Add to cart', product);
+  handleAddToCart(product: Product) {
+    // Dispatch to cart store so navbar badge & cart page update
+    this.store.dispatch(CartActions.addToCart({ product }));
   }
 }

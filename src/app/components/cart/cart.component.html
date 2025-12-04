@@ -1,0 +1,38 @@
+<div class="cart-page">
+    <h2>Your Cart</h2>
+  
+    <div *ngIf="(items$ | async) as items">
+      <div *ngIf="items.length; else empty">
+        <div class="cart-list">
+          <div class="cart-item" *ngFor="let it of items">
+            <img [src]="it.product.image" [alt]="it.product.title" width="80" />
+            <div class="meta">
+              <h4>{{ it.product.title }}</h4>
+              <p class="price">{{ it.product.price | currency:'USD' }}</p>
+  
+              <div class="qty-controls">
+                <button (click)="decrease(it.product.id)">−</button>
+                <span class="qty">{{ it.quantity }}</span>
+                <button (click)="increase(it.product.id)">+</button>
+  
+                <button class="remove" (click)="remove(it.product.id)">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="cart-footer">
+          <div class="total">Total: <strong>{{ total$ | async | currency:'USD' }}</strong></div>
+          <div class="actions">
+            <button (click)="clear()">Clear cart</button>
+            <!-- Checkout button for future -->
+          </div>
+        </div>
+      </div>
+  
+      <ng-template #empty>
+        <p>Your cart is empty.</p>
+      </ng-template>
+    </div>
+  </div>
+  

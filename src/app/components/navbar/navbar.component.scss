@@ -1,7 +1,6 @@
-// Variables for easy theme changes
 $nav-bg-color: #868484;
 $text-color: #e1e0e0;
-$accent-color: #007bff; // A standard blue for links/hovers
+$accent-color: #007bff;
 $padding-x: 20px;
 $padding-y: 15px;
 
@@ -11,9 +10,8 @@ $padding-y: 15px;
   align-items: center; 
   padding: $padding-y $padding-x;
   background-color: $nav-bg-color;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  // 1. The Brand Name
   .brand-name {
     font-size: 1.5rem;
     font-weight: 700;
@@ -21,14 +19,13 @@ $padding-y: 15px;
     cursor: pointer;
   }
 
-  // 2. The Navigation Links
   .nav-links {
     ul {
-      display: flex; // Makes list horizontal
-      list-style: none; // Removes bullet points
+      display: flex;
+      list-style: none;
       margin: 0;
       padding: 0;
-      gap: 20px; // Adds space between 'Home' and 'Products'
+      gap: 20px;
 
       li {
         cursor: pointer;
@@ -37,30 +34,67 @@ $padding-y: 15px;
         transition: color 0.3s ease;
 
         &:hover {
-          color: $accent-color; // Color change on hover
+          color: $accent-color;
         }
 
-        // Optional: If you use anchor tags inside li
         a {
           text-decoration: none;
           color: inherit;
 
-          // Style for the active link
           &.active-link {
-            color: $accent-color; // e.g. Blue
+            color: $accent-color;
             font-weight: bold;
-            border-bottom: 2px solid $accent-color; // Optional underline effect
+            border-bottom: 2px solid $accent-color;
           }
         }
       }
     }
   }
+
+  // Add styles for the cart container and badge here
+  .cart-container {
+    cursor: pointer; /* Ensures the whole area is clickable */
+    position: relative; /* Needed to position the badge */
+    
+    .icon-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .badge {
+      cursor: pointer; /* Added as requested */
+      
+      /* Standard badge styling (adjust as needed) */
+      position: absolute;
+      top: -8px; 
+      right: -8px;
+      background-color: red; /* Or use your accent color */
+      color: white;
+      border-radius: 50%;
+      padding: 4px 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      line-height: 1;
+
+      &.bump {
+        animation: bump 300ms ease-out;
+      }
+    }
+  }
 }
 
-// Mobile Responsiveness (Optional)
 @media (max-width: 600px) {
   .navbar-container {
     flex-direction: column;
     gap: 10px;
   }
+}
+
+/* Optional Bump Animation */
+@keyframes bump {
+  0% { transform: scale(1); }
+  10% { transform: scale(0.9); }
+  30% { transform: scale(1.1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }

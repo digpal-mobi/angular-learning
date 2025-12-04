@@ -17,8 +17,9 @@
     </ul>
   </div>
 
-  <div class="cart-container" routerLink="/cart">
+  <div class="cart-container" routerLink="/cart" role="link" aria-label="Cart">
     <div class="icon-wrapper">
+      <!-- cart svg -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -36,7 +37,11 @@
           d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
         ></path>
       </svg>
-      <span class="badge">3</span>
+
+      <!-- badge: shown only when count > 0 -->
+      <span class="badge" [class.bump]="bump" *ngIf="count > 0">
+        {{ count }}
+      </span>
     </div>
   </div>
 </div>

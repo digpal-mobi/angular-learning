@@ -1,0 +1,192 @@
+// Variables for consistent theming
+$primary-color: #007bff;
+$danger-color: #dc3545;
+$light-gray: #f8f9fa;
+$border-color: #e9ecef;
+$text-dark: #343a40;
+$text-muted: #6c757d;
+
+.cart-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  h2 {
+    margin-bottom: 1.5rem;
+    color: $text-dark;
+    font-size: 1.75rem;
+    border-bottom: 2px solid $border-color;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain; // Ensures image doesn't stretch weirdly
+    border-radius: 4px;
+    padding: 0.5rem;
+    background: #fff;
+    border: 1px solid $light-gray;
+  }
+
+  .meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+      color: $text-dark;
+    }
+
+    .price {
+      margin: 0;
+      color: $text-muted;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+  }
+
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: $light-gray;
+    padding: 0.25rem;
+    border-radius: 20px;
+
+    button {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      color: $text-dark;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      transition: background 0.2s;
+
+      &:hover {
+        background: darken(white, 5%);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    .qty {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: $text-dark;
+    }
+
+    // Isolate the remove button outside the grey pill if you prefer, 
+    // or style it distinctly inside.
+    .remove {
+      margin-left: 1rem;
+      background: none;
+      box-shadow: none;
+      width: auto;
+      border-radius: 4px;
+      color: $danger-color;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.5rem;
+      
+      &:hover {
+        background: rgba($danger-color, 0.1);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid $border-color;
+
+  .total {
+    font-size: 1.25rem;
+    color: $text-dark;
+    
+    strong {
+      color: $primary-color;
+      font-size: 1.5rem;
+      margin-left: 0.5rem;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+
+    button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      // Style for "Clear Cart"
+      &:first-child {
+        background-color: transparent;
+        border: 1px solid $danger-color;
+        color: $danger-color;
+
+        &:hover {
+          background-color: $danger-color;
+          color: white;
+        }
+      }
+
+      &.checkout { 
+        background-color: $primary-color;
+        color: white;
+        
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+    }
+  }
+}
+
+// Simple Empty State
+p {
+  color: $text-muted;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 3rem;
+}
