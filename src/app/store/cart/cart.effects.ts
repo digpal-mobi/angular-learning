@@ -39,7 +39,6 @@ export class CartEffects {
         try {
           const raw = localStorage.getItem('app_cart');
           const items = raw ? JSON.parse(raw) : [];
-          // console.debug('loadLocalCart$', items);
           return CartActions.loadCartSuccess({ items });
         } catch (e) {
           console.error('Failed to read local cart', e);
